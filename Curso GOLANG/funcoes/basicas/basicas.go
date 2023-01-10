@@ -32,4 +32,6 @@ func main() {
 
 	r51, r52 := f5()
 	fmt.Println("F5:", r51, r52)
+
+	f5()
 }
