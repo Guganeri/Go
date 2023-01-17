@@ -38,4 +38,7 @@ func main() {
 	coisa = produto{"Calça Jeans", 79.90}
 	fmt.Println(coisa.toString())
 	imprimir(coisa)
+
+	p2 := produto{"Calça jeans", 79.90}
+	imprimir(p2)
 }
