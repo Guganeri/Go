@@ -16,6 +16,12 @@ func main() {
 	//fale("Maria", "Pq vc não fala comigo?", 3)
 	//fale("João", "Só posso falar depois de você!", 1)
 
-	go fale("Go", "Está paralelo?", 3)
-	go fale("Sir", "yes", 3)
+	//go fale("Go", "Está paralelo?", 3)
+	//go fale("Sir", "yes", 3)
+
+	//time.Sleep(time.Second * 5)
+	//fmt.Println("FIM !")
+
+	go fale("Maria", "Entendi", 10)
+	fale("João", "Parabéns!", 5)
 }
