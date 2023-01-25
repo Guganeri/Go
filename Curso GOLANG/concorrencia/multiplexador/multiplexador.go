@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/Guganeri/Go/tree/master/Curso%20GOLANG/concorrencia/generator"
+	"github.com/cod3rcursos/html"
 )
 
 func encaminhar(origem <-chan string, destino chan string) {
