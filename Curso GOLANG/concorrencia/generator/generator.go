@@ -10,8 +10,8 @@ import (
 // Google I/O 2012 - Go Concurrency Patterns
 
 // <-chan - canal somente-leitura
-
-func titulo(urls ...string) <-chan string {
+// Titulo obtem o título de uma página html
+func Titulo(urls ...string) <-chan string {
 	c := make(chan string)
 	for _, url := range urls {
 		go func(url string) {
