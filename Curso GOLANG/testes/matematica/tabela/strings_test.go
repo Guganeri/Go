@@ -18,7 +18,7 @@ func TestIndex(t *testing.T) {
 		atual := string.Index(teste.texto, teste.parte)
 
 		if atual != teste.esperado {
-			t.Errorf(msgIndex, teste.texto, teste.parte, teste.esperado)
+			t.Errorf(msgIndex, teste.texto, teste.parte, teste.esperado, atual)
 		}
 	}
 }
