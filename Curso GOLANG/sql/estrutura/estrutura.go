@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -15,18 +16,22 @@ func exec(db *sql.DB, sql string) sql.Result {
 }
 
 func main() {
-	db, err := sql.Open("mysql", "root:123456@/")
+	db, err := sql.Open("mysql", "root:gRY0s%a5RT0l@/")
 	if err != nil {
 		panic(err)
 	}
+
+	db.SetConnMaxLifetime(time.Minute * 3)
+	db.SetMaxOpenConns(10)
+	db.SetMaxIdleConns(10)
 	defer db.Close()
 
-	exec(db, "create databse if not exists cursogo")
+	exec(db, "create database if not exists cursogo")
 	exec(db, "use cursogo")
 	exec(db, "drop table if exists usuarios")
-	exec(db, `create table usuarios(
+	exec(db, `create table usuarios (
 		id integer auto_increment,
 		nome varchar(80),
-		PRIMARY KEY(id)
+		PRIMARY KEY (id)
 	)`)
 }
