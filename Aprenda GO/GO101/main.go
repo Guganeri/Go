@@ -10,6 +10,9 @@ var (
 
 func main() {
 
+	var a, b, c = true, 2.3, "Olá"
+	println(a, b, c)
+
 	mensagem := "Aula 03"
 	fmt.Println(mensagem)
 
@@ -18,4 +21,9 @@ func main() {
 	fmt.Println("total:", total)
 	nome = "Teste temp"
 	fmt.Println("Hello", nome, "!")
+
+	var x, y = 10, 20
+	fmt.Println(x, y)
+	x, y = y, x
+	fmt.Println(x, y)
 }
