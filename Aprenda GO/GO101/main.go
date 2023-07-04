@@ -22,6 +22,7 @@ func sum(a, b int) int {
 func convertAndSum(a int, b string) (total int, err error) {
 	i, err := strconv.Atoi(b)
 	if err != nil {
+		fmt.Println("ERROR", err)
 		return
 	}
 
@@ -33,6 +34,9 @@ func convertAndSum(a int, b string) (total int, err error) {
 func main() {
 	hello("Android")
 	fmt.Println("Total:", sum(10, 5))
-	total, err := convertAndSum(10, "23")
-	fmt.Println("total:", total, err)
+	total, err := convertAndSum(10, "ia")
+	if err != nil {
+		fmt.Println("Utilize um valor válido")
+	}
+	fmt.Println("total:", total)
 }
