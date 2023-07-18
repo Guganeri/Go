@@ -23,6 +23,10 @@ func (c Categoria) HasParent() bool {
 	return c.Pai != nil
 }
 
+func (c *Categoria) MeuMetodo() {
+
+}
+
 func main() {
 	p := Pessoa{"Tiago", "Temporin", 31, true, "000.000.000.000"}
 	p.cpf = "1"

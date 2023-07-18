@@ -36,6 +36,23 @@ func show(d Document) {
 	fmt.Println(d.Doc())
 }
 
+type Animal interface {
+	Sound() string
+	Eat(food string) string
+}
+
+type Dog struct {
+	Name string
+}
+
+func (d Dog) Sound() string {
+	return "Woof"
+}
+
+func (d Dog) Eat(food string) string {
+	return fmt.Sprintf("%s is eating %s", d.Name, food)
+}
+
 func main() {
 	p := PessoaFisica{
 		Pessoa{Nome: "Tiago", Idade: 31, Status: true},
@@ -45,4 +62,11 @@ func main() {
 	fmt.Println(p)
 
 	show(p)
+
+	var myAnimal Animal
+	fmt.Println(myAnimal)
+	myAnimal = Dog{Name: "Buddy"}
+	fmt.Println(myAnimal.Sound())      // Output: Woof
+	fmt.Println(myAnimal.Eat("bones")) // Output: Buddy is eating bones
+
 }
