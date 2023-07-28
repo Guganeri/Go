@@ -14,7 +14,18 @@ func processando() {
 
 // T1
 func main() {
-	go processando() // T2
-	go processando() // T3
-	processando()    // T1
+
+	canal := make(chan int)
+
+	go func() {
+		for i := 0; i < 10; i++ {
+			canal <- 1
+			fmt.Println("Jogou no canal", i)
+		}
+	}()
+
+	for x := range canal {
+		fmt.Println("Recebeu no canal", x)
+		time.Sleep(time.Second)
+	}
 }
