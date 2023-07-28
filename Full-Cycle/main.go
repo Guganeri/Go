@@ -24,6 +24,13 @@ func main() {
 		}
 	}()
 
+	go func() {
+		for i := 0; i < 10; i++ {
+			canal <- 1
+			fmt.Println("Jogou no canal", i)
+		}
+	}()
+
 	for x := range canal {
 		fmt.Println("Recebeu no canal", x)
 		time.Sleep(time.Second)
