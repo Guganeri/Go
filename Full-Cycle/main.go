@@ -31,8 +31,14 @@ func main() {
 		}
 	}()
 
-	for x := range canal {
-		fmt.Println("Recebeu no canal", x)
+	go worker(canal, 1)
+	worker(canal, 2)
+
+}
+
+func worker(canal chan int, workerID int) {
+	for {
+		fmt.Println("Recebeu do canal", <-canal, "no worker", workerID)
 		time.Sleep(time.Second)
 	}
 }
