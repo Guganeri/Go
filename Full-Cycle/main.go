@@ -32,7 +32,9 @@ func main() {
 	}()
 
 	go worker(canal, 1)
-	worker(canal, 2)
+	go worker(canal, 2)
+	go worker(canal, 3)
+	worker(canal, 4)
 
 }
 
