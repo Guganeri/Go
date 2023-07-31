@@ -7,6 +7,7 @@ import (
 
 	"github.com/guganeri/Go/Full-Cycle/internal/infra/database"
 	"github.com/guganeri/Go/Full-Cycle/internal/usecase"
+	"github.com/guganeri/Go/Full-Cycle/pkg/rabbitmq"
 	_ "github.com/mattn/go-sqlite3"
 	amqp "github.com/rabbitmq/amqp091-go"
 )
@@ -19,6 +20,13 @@ func main() {
 	defer db.Close()
 	orderRepository := database.NewOrderRepository(db)
 	uc := usecase.NewCalculateFinalPrice(orderRepository)
+	ch, err := rabbitmq.OpenChannel()
+	if err != nil {
+		panic(err)
+	}
+	defer ch.Close()
+	msgRabbitmqChannel := make(chan amqp.Delivery)
+	go rabbitmq.Consume(ch, msgRabbitmqChannel) // escutando a fila //trava
 
 	input := usecase.OrderInput{
 		ID:    "123",
@@ -31,9 +39,11 @@ func main() {
 	}
 
 	fmt.Println(output)
+
+	rabbitmqWorder(msgRabbitmqChannel, uc)
 }
 
-func rabbitmqWorder(msgChan chan amqp.Delivery, uc usecase.CalculateFinalPrice) {
+func rabbitmqWorder(msgChan chan amqp.Delivery, uc *usecase.CalculateFinalPrice) {
 	fmt.Println("Starting rabbitmq")
 	for msg := range msgChan {
 		var input usecase.OrderInput
