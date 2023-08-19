@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestNewJOb(t *testing.T) {
+func TestNewJob(t *testing.T) {
 	video := domain.NewVideo()
 	video.ID = uuid.Generate().String()
 	video.FilePath = "path"
