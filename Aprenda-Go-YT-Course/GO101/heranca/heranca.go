@@ -31,6 +31,10 @@ type Document interface {
 	Doc() string
 }
 
+func (pj PessoaJuridica) Doc() string {
+	return fmt.Sprintf("me cpf é: %s", pj.cnpj)
+}
+
 func show(d Document) {
 	fmt.Println(d)
 	fmt.Println(d.Doc())
@@ -63,10 +67,16 @@ func main() {
 
 	show(p)
 
-	var myAnimal Animal
-	fmt.Println(myAnimal)
-	myAnimal = Dog{Name: "Buddy"}
-	fmt.Println(myAnimal.Sound())      // Output: Woof
-	fmt.Println(myAnimal.Eat("bones")) // Output: Buddy is eating bones
+	pj := PessoaJuridica{
+		"Temporim LTDA",
+		"123.123.123.12",
+	}
+	show(pj)
+
+	//	var myAnimal Animal
+	//	fmt.Println(myAnimal)
+	//	myAnimal = Dog{Name: "Buddy"}
+	//	fmt.Println(myAnimal.Sound())      // Output: Woof
+	//	fmt.Println(myAnimal.Eat("bones")) // Output: Buddy is eating bones
 
 }
