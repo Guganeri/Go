@@ -36,6 +36,9 @@ func (pj PessoaJuridica) Doc() string {
 }
 
 func show(d Document) {
+	if d, ok := d.(PessoaFisica); ok {
+		fmt.Println(d.Sobrenome)
+	}
 	fmt.Println(d)
 	fmt.Println(d.Doc())
 }
